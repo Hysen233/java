@@ -1,0 +1,270 @@
+JDK安装和环境变量的配置：C:\Program Files (x86)\Java\jdk1.6.0_10\bin
+
+path  C:\Program Files (x86)\Java\jdk1.6.0_10\bin
+新建classpath .;C:\Program Files (x86)\Java\jdk1.6.0_10\lib
+
+javac -version  查看jdk编译的版本号
+java -version    查看jdk运行的版本号
+
+Java 执行JVM（Java虚拟机）
+原理：先编译后运行
+第一步：先编写一个后缀名.java的文件
+Hello.java
+public class Hello{
+	public static void main(String[] args){
+		System.out.println("HelloWorld");
+	}
+}
+第二步：编译第一步中写好的文件，生成一个对应的可执行.class文件
+
+Hello.class
+第三步：运行 
+
+编译的指令：javac Hello.java   -->生成一个Hello.class 
+运行的指令：java Hello        (运行的是Hello.class文件)
+
+注意：编码的规范（排版，命名规范）
+java严格区分大小写，文件名必须和public的类名相同
+
+
+	// 常用的快捷键
+	// alt+/ 代码补全，代码提示
+	// ctrl+d 删除
+	// ctrl+a 全选
+	// ctrl+/ 单行注释
+	// ctrl+shift+/ 多行注释 ； 取消ctrl+shift+\
+	// ctrl+shift+f 代码排版格式 （右键source-->format）
+	//查找想关
+	//ctrl+f  当前页面进行查找
+	//ctrl+h  当前的工作空间（java代码存放的地方）进行查找（选中 File Search进行查看）
+	//如何查看工作空间，选中某一工程的名字 右键-->properties查看localtion的值
+	
+	//ctrl+alt+h    单击某一个方法名，然后使用ctrl+alt+h可以查看到整个工作中有哪些地方调用了该方法
+	//ctrl+s         保存当前正在操作的文件
+	//ctrl+shift+s   保存整个工程（当我们同时修改多个页面可以一次性就保存好）
+	
+	//ctrl +shift +o  导包的快捷键
+	//ctrl+1  相当于鼠标点击了错误之后提供的解决方
+数据类型：（字节和位的概念）
+数值  ：进一步分为整数和非整数
+整数       int     long  
+非整数：double   float 
+非数值  ：char     String  boolean 
+
+
+Java基本类型占用的字节数：（一个字节8位）
+1字节： byte , boolean
+2字节： short , char
+4字节： int , float
+8字节： long , double
+
+注意：String是一个引用数据类型
+
+注意：
+变量在赋值时有几点需要我们关注：1.char用单引号里面只能是一个字符  ，
+2.String 用双引号  3. boolean 只有两个值  true  false
+4.float 数字后面一定加上f（因为小数默认是double类型的）
+
+变量使用的方式：
+方式一：先声明后赋值在使用
+int age ;  age = 16;  age +=1;
+方式二：声明的同时直接赋值再使用
+int age = 16;  age +=1;
+
+变量名命名的规则：
+首字母：字母 下划线  $
+其余位置：字母 下划线  $  数字
+不能使用关键字
+
+命名的规范：
+1.见名知意   （保存一个姓名  name）
+2.首字母小写
+3.驼峰命名  （myScore）
+
+选择题？下列变量名命名合法的是？【温馨提示，考到错了规则写100遍】
+
+数据类型转换？
+数据类型相似（数值类型 int  和 double ,但是char可以自动转换成int）
+如果是小类型可以自动转换成大类型
+但是大类型转换成小类型就有精度的丢失，就必须要强制转换
+double a = 10.5;
+int b = (int)a;
+
+运算符
+赋值运算符（=）   优先级最低的
+算术运算符（+、 – 、*、/、%）
+关系运算符（>、<、>=、<=、 ==、 !=）
+逻辑运算符  &&   || ！
+
+扩展：&&和&之间的区别？
+表达式1&&表达式2：表达式1如果为false，那么表达式2不计算了
+表达式1&表达式2：表达式1如果为false还是true，那么表达式2都要计算
+
+表达式1||表达式2：表达式1如果为true，那么表达式2不计算了
+
+
+优先级：算术运算符>关系运算符>逻辑运算符>赋值运算符
+
+
+选择一：
+if(表达式){
+	//代码
+}
+注意：
+1.表达式是布尔类型的值，当表达式结果为true时才会执行代码块
+2.当代码只有一行时，大括号可以省略，但是习惯性不省略
+3.有一种特殊的情况也可以省略大括号，代码是一个语法块
+		int a = 90;
+		if (a > 80){
+			if (a > 85){
+				a++;
+			}else{
+				a--;
+			}
+		}
+
+		改成
+		int a = 90;
+		if (a > 80)
+		if (a > 85)
+		a++;
+		else
+		a--;
+			
+
+逻辑运行&和&&区别:
+		int i =3;
+		if (i++>5&&i++<9){
+		//if (i++>5&i++<9){
+			System.out.println(i);
+			System.out.println("恭喜你执行完if语句");
+		}
+
+		System.out.println(i);
+&和&&都是逻辑运算符，都是判断两边同时真则为真，否则为假；
+但是&&当第一个条件不成立之后，后面的条件都不执行了，
+而&则还是继续执行，直到整个条件语句执行完为止。
+如&&例子中的i++>5被执行了，而i++<9并没有被执行，这就是他们的差别。
+&例子中的i++>5和i++<9都被执行了。
+
+同理：
+|和||情况类似&和&&，||当第一条件为true时第二个就不执行了。
+
+
+if-else   多重if   if嵌套
+
+理解清楚跑步的案例：
+		if(time<10){
+			 System.out.println("进入决赛，带完善");
+			//进入决赛后，根据用户输入的性别进行判断
+			 String sex = input.next();
+			 if(sex.equals("man")){
+				 System.out.println("进入到男子组");
+			 }else if(sex.equals("woman")){
+				 System.out.println("进入到女子组");
+			 }else{
+				 System.out.println("泰国");
+			 }
+		 }else{
+			 System.out.println("淘汰了");
+		 }
+
+
+
+选择二：switch语句
+switch(表达式){
+	case 常量1:
+		代码块;
+		break;
+	case 常量2:
+		代码块;
+		break;
+
+	default:
+		代码块;
+		break;
+}
+
+注意：switch语句一般用于替换多重if做等值匹配，
+并且表达式的类型只能是int或者char
+打电话案例
+
+循环：
+for   while  do-while
+循环的三要素：循环的初始条件，循环的判断条件，循环的改变条件
+for 循环的语法：
+for(循环的初始条件;循环的判断条件;循环的改变条件){
+	循环操作;
+}
+
+for(int i=1;i<=50;i++){
+	System.out.println("打印第"+i+"份试卷！");
+}
+
+
+
+while循环的语法：
+
+循环的初始条件;
+while(循环的判断条件){
+	循环操作;
+	循环的改变条件
+}
+
+int i=1;
+while(i<=50){
+	System.out.println("打印第"+i+"份试卷！");
+	i++;
+}
+
+区别和联系：
+1.都要有循环三要素(学会套用语法)
+2.一般情况下，已知循环次数的时候用for循环，未知循环次数用while循环
+其实他们两个是可以互换的
+3.for循环的循环初始条件和循环的改变条件是可以省略，但是循环的判断条件不能省略
+
+while先判断后执行 do-while先执行一次，然后再判断再执行
+while至少执行0次，do-while至少执行1次
+
+
+a++ 和 ++a区别？
+1.单独使用时都表示a=a+1;
+2.当他们参与运算时情况不同：
+int a=10;
+int b=a++;
+结果：a=11  b=10;
+分析：++写在后面，先运算后自增
+（先进行赋值运算然后再自己+1，等价于int b=a;a++;）
+int a=10;
+int b=++a;
+结果：a=11  b=11;
+分析：++写在前面，先自增后运算
+（先进行自己+1然后再赋值运算，等价于a++;int b=a;）
+
+break和continue区别？
+break结束整个循环
+continue 结束本轮循环，直接进入下一次循环
+
+
+双重for循环？
+计算3个班级，每个5个人计算他们平均成绩？
+九九乘法表
+打印各种星星
+
+数组
+int[] a = new int[5];
+int[] a={10,30,50,40,20};
+int[] a = new int{10,30,50,40,20};
+
+数组的下标是从0开始，到a.length-1结束,防止数组下标越界
+数组的长度a.length
+
+保存班上5名学员的成绩，并求平均分？
+
+三个排序算法？
+冒泡排序、选择排序、插入排序
+只需要记住排序的规则，然后推导出来。
+
+
+
+
